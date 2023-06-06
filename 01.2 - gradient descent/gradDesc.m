@@ -28,14 +28,12 @@ function [W, J_history] = gradDesc(X, Y, W, learning_rate)
         % Le cout J associé à ces hypotheses
         % Le vecteur de gradient G à utiliser pour chaque poids
         % mettre a jour W en fonction de G et de learning_rate
-
         
-       
-
-
-
-
-       
+        H = X * W'; % Predictions 
+        R = H - Y; % Residuals 
+        G = (1 / m) * X' * R; % Gradient 
+        W = W - learning_rate * G'; % Update weights 
+        J = sum(R .^ 2) / (2 * m); % Compute cost
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         iterations = iterations + 1;

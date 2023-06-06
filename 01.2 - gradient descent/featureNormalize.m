@@ -21,11 +21,19 @@ sigma = zeros(1, n);
 %                   on divise par la variance (std).
 % ============================================================
 
+    % la fonction mean dispose d'une option permettant de 
+    % calculer la moyenne par colonne
+    mu = mean(X, 1);
 
+    % puisque X_norm est dèja initialiser avec les valeurs
+    % de X, on peut directement lui soustraires les moyennes
+    % chaque colonnes (paramètres), se vera soustraire
+    % sa propre moyenne
+    X_norm = X_norm - mu;
 
+    sigma = std(X_norm, 1);
 
-
-
+    X_norm = X_norm ./ sigma;
 
 
 % ============================================================
